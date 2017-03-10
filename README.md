@@ -1,5 +1,6 @@
 ## Expanding aliases in zsh
 code taken from [here](https://wiki.math.cmu.edu/iki/wiki/tips/20140625-zsh-expand-alias.html) with slight modifications.
+
 I wanted to make some of my zsh aliases behave like vim abbreviations: Namely, as soon as you press space, the alias is expanded and you see the expanded command before executing it. Since I have a large number of clunky aliases, I didn't want all aliases to be expanded by default.
 
 Consequently, I came up with the following (based on something I first saw [here](http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html)).
@@ -56,17 +57,15 @@ To add an ealias from the command line you can use the permealias function:
 ```sh
 $ permealias "dslogs='docker service logs -f --tail=100'"
 ```
-the quotes order is important when entering an expandable alias because with more than one word because of the shell different evaluation of single quote and double quotes. [Further reading](http://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
+The quotes order is important when entering an expandable alias because with more than one word because of the shell different evaluation of single quote and double quotes. [Further reading](http://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
 
 Now typing gc in a position where zsh expands a command will appear like you typed git commit.
 
 ## Installation
-Your preferred zsh plugin manager, or just clone into ${HOME}/.oh-my-zsh/plugins/ and then source it at the end of your zshrc
+Your preferred zsh plugin manager, or just clone into ${HOME}/.oh-my-zsh/plugins/ and then add it as the last plugin in the list of oh-my-zsh plugins
 ```zsh
-source ${HOME}/.oh-my-zsh/plugins/expand-ealias/expand-ealias.plugin.zsh
+plugins=(zsh-nvm git docker brew node npm osx web-search zsh-syntax-highlighting ssh-agent expand-ealias)
 ```
-I source the plugin at the end of my zszhrc file so it doesnt interfere with any other ealiases that were somehow defined somewhere else..
-Also, make sure the ealiases you define are loaded after the plugin. 
 
 ## License
 This page is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
