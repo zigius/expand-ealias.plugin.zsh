@@ -1,6 +1,11 @@
 typeset -a ealiases
 ealiases=()
 
+function permealias () 
+{ 
+  alias "$*";
+  echo ealias "$*" >> ~/.oh-my-zsh/custom/zsh-ealiases.zsh
+}
 function ealias()
 {
   alias $1
